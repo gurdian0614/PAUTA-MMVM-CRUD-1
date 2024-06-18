@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PAUTA_MMVM_CRUD_1.Views.ProductoMain"
+             xmlns:viewModel="clr-namespace:PAUTA_MMVM_CRUD_1.ViewModels"
+             x:DataType="viewModel:ProductoMainViewModel"
+             xmlns:model="clr-namespace:PAUTA_MMVM_CRUD_1.Models"
+             Title="ProductoMain">
+    <VerticalStackLayout Padding="10,0,10,0">
+        <Button Text="Agregar Producto" HorizontalOptions="Start" Command="{Binding goToAddProductoFormCommand}" />
+        <Grid Margin="5,5,5,5" RowDefinitions="Auto" ColumnDefinitions="*,*">
+            <Label Text="Nombre" FontAttributes="Bold" HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="0" />
+            <Label Text="Descripción" FontAttributes="Bold" HorizontalTextAlignment="Start" Grid.Row="0" Grid.Column="1" />
+        </Grid>
+        <CollectionView ItemsSource="{Binding ProductoCollection}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Producto" >
+                    <Grid RowSpacing="0" RowDefinitions="5,Auto,5,1" ColumnDefinitions="*,*" VerticalOptions="FillAndExpand">
+                        <Label Text="{Binding Nombre}" Grid.Row="1" Grid.Column="0" />
+                        <Label Text="{Binding Descripcion}" Grid.Row="1" Grid.Column="1" />
+                        <Grid.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Source={x:RelativeSource AncestorType={x:Type viewModel:ProductoMainViewModel}},Path=SelectProductoCommand}" CommandParameter="{Binding .}" />
+                        </Grid.GestureRecognizers>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

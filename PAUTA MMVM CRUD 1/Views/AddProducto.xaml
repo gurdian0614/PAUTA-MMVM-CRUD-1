@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PAUTA_MMVM_CRUD_1.Views.AddProducto"
+             xmlns:viewModel="clr-namespace:PAUTA_MMVM_CRUD_1.ViewModels"
+             x:DataType="viewModel:AddProductoViewModel"
+             
+             Title="Listado de Productos">
+    <VerticalStackLayout Padding="30,0,30,0" Spacing="5" VerticalOptions="StartAndExpand" HorizontalOptions="FillAndExpand">
+        <Label Text="Nombre completo:" />
+        <Entry Text="{Binding Nombre}" Keyboard="Text" />
+
+        <Label Text="Descripción: (Opcional)" />
+        <Entry Text="{Binding Descripcion}" Keyboard="Text" />
+
+        <Button Text="Guardar" Command="{Binding AddUpdateCommand}" />
+    </VerticalStackLayout>
+</ContentPage>
